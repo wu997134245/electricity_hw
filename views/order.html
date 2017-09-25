@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cart</title>
+</head>
+<script  type="text/javascript" src="/res/jquery-3.1.0.min.js"></script>
+<body>
+
+<style>
+    .c1{
+        margin: 0px auto;
+        width:600px;
+        height:150px;
+        border:1px solid #ff0722;
+    }
+    .c2{
+        float:left;
+        width:200px;
+        height:150px;
+        line-height:150px;
+        text-align: center;
+        #border:1px solid #fddeff;
+    }
+
+
+    .c3{
+        float:left;
+        width:150px;
+        height:150px;
+
+    }
+
+
+    .c4{
+        float:right;
+        line-height:150px;
+    }
+
+    .c5{
+        margin: 0px auto;
+        width:600px;
+        height:150px;
+    }
+</style>
+
+
+{% for i in res %}
+<div id = {{i[0]}} class="c1">
+    <div class="c2">
+        {{i[1]}}
+    </div>
+    <div class="c3">
+        <img src="/res/product/{{i[3]}}" width="150px" height="150px">
+    </div>
+</div>
+{% endfor %}
+{% include 'product_foot.html' %}
+
+</body>
+</html>

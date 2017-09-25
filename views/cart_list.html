@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cart</title>
+</head>
+<script  type="text/javascript" src="/res/jquery-3.1.0.min.js"></script>
+<script>
+    function cart_remove(id) {
+        div_id = document.getElementById(id);
+        div_id.parentNode.removeChild(div_id);
+        $.ajax({
+            url:'/cart/remove?pid=' + id,
+            success:function (data) {
+                if (data === '1'){
+                    alert('删除成功!')
+                }
+
+
+
+
+            }
+        })
+    }
+
+    function ac1() {
+        window.location.href='/cart/account'
+    }
+
+
+
+
+</script>
+
+
+
+
+<style>
+    .c1{
+            margin: 0px auto;
+            width:600px;
+            height:150px;
+            border:1px solid #ff0722;
+        }
+    .c2{
+         float:left;
+         width:200px;
+         height:150px;
+         line-height:150px;
+         text-align: center;
+         #border:1px solid #fddeff;
+        }
+
+
+    .c3{
+         float:left;
+         width:150px;
+         height:150px;
+
+        }
+
+
+    .c4{
+        float:right;
+        line-height:150px;
+        }
+
+    .c5{
+            margin: 0px auto;
+            width:600px;
+            height:150px;
+        }
+</style>
+
+{% include 'product_head.html' %}
+
+
+
+<body>
+{% for i in res %}
+<div id = {{i[0]}} class="c1">
+     <div class="c4">
+        <input type="button" value="移除" onclick="cart_remove({{i[0]}})">
+    </div>
+    <div class="c2">
+        {{i[1]}}
+    </div>
+    <div class="c3">
+        <img src="/res/product/{{i[3]}}" width="150px" height="150px">
+    </div>
+    <div class="c2">
+         {{i[4]}} 元
+         {{cart_dict[i[0]][0]}}件
+    </div>
+</div>
+{% endfor %}
+
+
+<div class="c5">
+    <div style="float:right;right: 0px;">
+    <p>总价 {{all_pirce}}</p>
+        <br>
+    <input id = 'account' type="button"  style="width:100px;height:50px;" value="结算" onclick="ac1()"/>
+    </div>
+</div>
+{% include 'product_foot.html' %}
+
+</body>
+</html>

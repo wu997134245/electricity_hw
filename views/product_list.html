@@ -1,0 +1,72 @@
+
+<script>
+    function product_dis(id){
+        document.location.write('/product_dis/id')
+    }
+</script>
+
+
+
+
+
+<style>
+       body,* {
+                 margin: 0 auto;
+                 #background-color:red;
+                 padding: 0;
+
+                }
+
+    .d1{
+        margin: 0 auto;
+        width:1040px;
+        border:1px solid red;
+        overflow: hidden;
+
+    }
+
+    .d3{
+        width:1060px;
+        overflow: hidden;
+
+}
+
+    .d2{
+        float:left;
+        width:200px;
+        height:200px;
+        border:1px solid red;
+        margin-top: 10px;
+        margin-right: 10px;
+        #background-color:red;
+        text-align: center;
+    }
+    .clear{
+        clear:both;
+    }
+
+    .i2{
+        width:100px
+    }
+
+</style>
+
+
+
+
+{% include 'product_head.html' %}
+<div class="d1">
+    <div class="d3">
+        {%for i in res%}
+    <div class="d2">
+        <a href="/product_dis/{{i[0]}}"><img class="i2" src="res/product/{{i[3]}}"></a><br>
+        {{i[1]}}<br>
+
+    </div>
+{%endfor%}
+    <div class="clear"></div>
+</div>
+</div>
+
+
+{% include 'product_foot.html' %}

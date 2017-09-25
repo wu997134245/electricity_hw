@@ -1,0 +1,86 @@
+<script  type="text/javascript" src="/res/jquery-3.1.0.min.js"></script>
+
+
+<script>
+
+        $(function () {
+            $("#addcart").click(
+                    function () {
+                        $.ajax({
+                            url: "/cart/add?pid=" + $(this).attr("productid") + "&pcount=" + document.getElementById('pcount').value,
+                            success: function (data) {
+                                alert("data");
+                            }
+                        });
+                    }
+            );
+        });
+
+</script>
+
+
+<style>
+        body,* {
+                 margin: 0 auto;
+                 padding: 0;
+                }
+
+    .d0{
+        margin-top:auto;
+        width:1040px;
+
+        }
+
+    .d1{
+        margin-top: 100px; auto;
+        width:610px;
+        height:300px;
+        #border:1px solid red;
+
+        }
+
+    .d2{
+        height:300px;
+        width:300px;
+        float:left;
+        border:1px solid red;
+    }
+
+
+    .d3{
+        width:300px;
+        height:300px;
+        text-align: center;
+        border:1px solid red;
+        float:left;
+    }
+
+</style>
+
+
+
+
+
+
+
+{% include 'product_head.html' %}
+<div class="d0">
+<div class="d1">
+    <div class="d2">
+        <img src="/res/product/{{res[3]}}" width="300px"><br>
+    </div>
+    <div class="d3">
+
+        <div class="shopname"><h3>{{res[1]}}</h3></div><br>
+        <div class="dis">{{res[2]}}</div><br><br><br>
+        <div class="proce">价格{{res[4]}}</div><br><br>
+        <div class="num">购买:<input type="text" style="width:60px;" id="pcount" value="1">(库存:{{res[5]}})<br>
+        <input type="button" value="收藏">
+        <input  id ='addcart' type="submit" value="加入购物车" productid="{{res[0]}}">
+        </div>
+    </div>
+</div>
+</div>
+
+{% include 'product_foot.html' %}
+
